@@ -23,4 +23,9 @@ public class MainController {
     public void contact() {
         System.out.println("contact");
     }
+
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/question/list";
+    }
 }
