@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
@@ -18,10 +19,11 @@ public class SbbApplicationTests {
 
     @Test
     void testJpa() {
+        assertEquals(2, questionRepository.count());
         Optional<Question> oq = questionRepository.findById(1);
         assertTrue(oq.isPresent());
         Question q = oq.get();
-        q.setSubject("수정된 제목");
-        questionRepository.save(q);
+        questionRepository.delete(q);
+        assertEquals(1, questionRepository.count());
     }
 }
