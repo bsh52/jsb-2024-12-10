@@ -1,5 +1,6 @@
 package com.mysite.sbb.domain.question.controller;
 
+import com.mysite.sbb.domain.answer.AnswerForm;
 import com.mysite.sbb.domain.question.QuestionForm;
 import com.mysite.sbb.domain.question.entity.Question;
 import com.mysite.sbb.domain.question.service.QuestionService;
@@ -29,7 +30,7 @@ public class QuestionController {
     }
 
     @GetMapping("/detail/{id}")
-    public String detail(Model model, @PathVariable int id) {
+    public String detail(Model model, @PathVariable int id, AnswerForm answerForm) {
         Question question = questionService.getQuestion(id);
         model.addAttribute("question", question);
         return "question_detail";
