@@ -1,11 +1,13 @@
 package com.mysite.sbb.domain.answer.entity;
 
 import com.mysite.sbb.domain.question.entity.Question;
+import com.mysite.sbb.domain.user.entity.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -22,4 +24,12 @@ public class Answer {
 
     @ManyToOne
     private Question question;
+
+    @ManyToOne
+    private SiteUser author;
+
+    private LocalDateTime modifyDate;
+
+    @ManyToMany
+    Set<SiteUser> voter;
 }
